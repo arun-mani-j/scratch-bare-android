@@ -15,6 +15,10 @@ const rpc = new BareKit.RPC((req) => {
 
 const req = rpc.request('ping')
 
-req.send('Ping from Bare')
+const addon = require('bare-addon')
+console.log('+++ Replying')
+console.log('+++', addon.hello())
+req.send(addon.hello())
+console.log('+++ Replied')
 
 req.reply().then((data) => console.log(data.toString()))
